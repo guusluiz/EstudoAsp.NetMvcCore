@@ -4,8 +4,8 @@ using System.Diagnostics;
 
 namespace MinhaDemoMvc.Controllers
 {
-    //[Route("")]
-    //[Route("gestao")]
+    [Route("")]
+    [Route("gestao")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,9 +14,9 @@ namespace MinhaDemoMvc.Controllers
         {
             _logger = logger;
         }
-        //[Route("")]
-        //[Route("pagina-inicial")]
-        //[Route("pagina-inicial/{id:int}/{categoria:guid}")]
+        [Route("")]
+        [Route("pagina-inicial")]
+        [Route("pagina-inicial/{id:int}/{categoria:guid}")]
         public IActionResult Index(int id, Guid categoria)
         {
             var filme = new Filme
@@ -27,11 +27,11 @@ namespace MinhaDemoMvc.Controllers
                 Avaliacao = 10,
                 Valor = 20000
             };
-            return RedirectToAction("Privacy", filme);
-            //return View();
+            //return RedirectToAction("Privacy", filme);
+            return View();
         }
-        //[Route("privacidade")]
-        //[Route("politica-de-privacidade")]
+        [Route("privacidade")]
+        [Route("politica-de-privacidade")]
         public IActionResult Privacy(Filme filme)
         {
             if(ModelState.IsValid)
@@ -47,7 +47,7 @@ namespace MinhaDemoMvc.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //[Route("erro")]
+        [Route("erro")]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
